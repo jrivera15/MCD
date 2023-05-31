@@ -48,7 +48,7 @@ paralelo de elementos simples (usualmente adaptativos) y con organización jerá
 las cuales intentan interactuar con los objetos del mundo real del mismo modo que lo
 hace el sistema nervioso biológico. 
 
-## Elementos básicos
+## Estructura de la red neuronal
 A continuación, se puede ver en la figura el esquema de una red neuronal:
 
 ![Imagen de una red neuronal](https://advancedtech.files.wordpress.com/2008/08/para-post1.jpg)
@@ -85,3 +85,32 @@ entrada a la neurona, multiplicados por sus correspondientes pesos.
 entrada a la neurona, multiplicados por sus correspondientes pesos.
 3) Máximo de las entradas pesadas: solamente toma en consideración el valor
 de entrada más fuerte, previamente multiplicado por su peso correspondiente.
+
+
+
+## Problema a implementar
+
+La migraña es un tipo de dolor de cabeza que puede ocurrir con síntomas como náuseas, vómitos o sensibilidad a la luz y al sonido. En la mayoría de las personas, se siente un dolor pulsátil únicamente en un lado de la cabeza. 
+
+Existen dos tipos principales de migrañas:
+
+- Migraña con aura (migraña clásica)
+- Migraña sin aura (migraña común)
+
+El aura es un grupo de síntomas del sistema nervioso (neurológicos). Estos síntomas se consideran un signo de advertencia de que una migraña está por venir.
+
+Para este caso, se seleccionó de Kaggle un dataset que contiene datos sobre los pacientes y sus síntomas, con los cuales se hizo un diagnóstico para definir el tipo de migraña que presentaban. Con esta implementación podremos entrenar una red neuronal de clasificación que nos permita, mediante el procesamiento de los datos de una persona, poder definir qué clase de migraña está padeciendo.
+
+
+## Referencias
+
+Damián Jorge Matich. Cátedra: Redes Neuronales: Conceptos Básicos y Aplicaciones. 
+https://www.frro.utn.edu.ar/repositorio/catedras/quimica/5_anio/orientadora1/monograias/matich-redesneuronales.pdf
+
+Dataset en Kaggle
+https://www.kaggle.com/datasets/weinoose/migraine-classification
+
+MedlinePlus
+https://medlineplus.gov/spanish/ency/article/000709.htm
+
+
