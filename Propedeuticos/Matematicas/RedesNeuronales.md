@@ -49,7 +49,7 @@ las cuales intentan interactuar con los objetos del mundo real del mismo modo qu
 hace el sistema nervioso biológico. 
 
 ## Elementos básicos
-A continuación, se puede ver en la Fig. 1 el esquema de una red neuronal:
+A continuación, se puede ver en la figura el esquema de una red neuronal:
 
 ![Imagen de una red neuronal](https://advancedtech.files.wordpress.com/2008/08/para-post1.jpg)
 
@@ -63,6 +63,25 @@ recibe el nombre de entrada global. Por lo tanto, ahora nos enfrentamos al probl
 cómo se pueden combinar estas simples entradas (ini1, ini2, ...) dentro de la entrada
 global, gini. Esto se logra a través de la función de entrada, la cual se calcula a partir del
 vector entrada. La función de entrada puede describirse como sigue:
+
 inputi = (ini1• wi1)* (ini2• wi2)*... (inin• win)
+
 donde: * representa al operador apropiado (por ejemplo: máximo, sumatoria,
 productoria, etc.), n al número de entradas a la neurona Ni y wi al peso. 
+
+Los valores de entrada se multiplican por los pesos anteriormente ingresados a la
+neurona. Por consiguiente, los pesos que generalmente no están restringidos cambian la
+medida de influencia que tienen los valores de entrada. Es decir, que permiten que un
+gran valor de entrada tenga solamente una pequeña influencia, si estos son lo
+suficientemente pequeños.
+
+![Imagen de una neurona simple](https://github.com/jrivera15/MCD/assets/5826577/bd2e66a8-11db-46aa-9734-dbbc0cd61b1e)
+
+Algunas de las funciones de entrada más comúnmente utilizadas y conocidas
+son:
+1) Sumatoria de las entradas pesadas: es la suma de todos los valores de
+entrada a la neurona, multiplicados por sus correspondientes pesos.
+2) Productoria de las entradas pesadas: es el producto de todos los valores de
+entrada a la neurona, multiplicados por sus correspondientes pesos.
+3) Máximo de las entradas pesadas: solamente toma en consideración el valor
+de entrada más fuerte, previamente multiplicado por su peso correspondiente.
