@@ -160,6 +160,9 @@ Un aspecto importante respecto al aprendizaje de las redes neuronales es el
 conocer cómo se modifican los valores de los pesos, es decir, cuáles son los criterios
 que se siguen para cambiar el valor asignado a las conexiones cuando se pretende que
 la red aprenda una nueva información.
+
+
+### Mecanismos de aprendizaje
 Hay dos métodos de aprendizaje importantes que pueden distinguirse:
 1. Aprendizaje supervisado.
 2. Aprendizaje no supervisado.
@@ -172,7 +175,7 @@ Matemáticamente esto es:
 donde t hace referencia a la etapa de aprendizaje, wij(t+1) al peso nuevo y wij(t) al peso
 viejo.
 
-### Aprendizaje supervisado
+#### Aprendizaje supervisado
 
 1. Aprendizaje por corrección de error.
 Consiste en ajustar los pesos de las conexiones de la red en función de la
@@ -189,7 +192,31 @@ oculta.
 
 
 
-### Aprendizaje no supervisado
+#### Aprendizaje no supervisado
+
+### Elección del conjunto inicial de pesos
+Antes de comenzar el proceso de entrenamiento se debe determinar un estado
+inicial, lo que significa: escoger un conjunto inicial de pesos para las diversas
+conexiones entre las neuronas de la red neuronal. Esto puede realizarse por varios
+criterios; por ejemplo uno de ellos es otorgar un peso aleatorio a cada conexión,
+encontrándose los mismos dentro de un cierto intervalo. Generalmente un intervalo del
+tipo [-n, n], donde n es un número natural positivo.
+Cabe mencionar que durante el transcurso del entrenamiento los pesos no se
+encuentran restringidos a dicho intervalo.
+
+### Detención del proceso de aprendizaje.
+Para determinar cuándo se detendrá el proceso de aprendizaje, es necesario
+establecer una condición de detención.
+Normalmente el entrenamiento se detiene cuando el cálculo del error cuadrado
+sobre todos los ejemplos de entrenamiento ha alcanzado un mínimo o cuando para cada
+uno de los ejemplos dados, el error observado está por debajo de un determinado
+umbral. 
+Otra condición de detención del aprendizaje puede ser cuando un cierto número
+de ciclos y/o pasos de entrenamiento hayan sido completamente corridos.
+
+Luego de alcanzarse la condición de detención, los pesos no se volverán a
+cambiar. Entonces podemos decir que la transformación de los datos de entrada a los de
+salida está resuelta. 
 
 ### Validación de la red neuronal
 Después del proceso de entrenamiento los pesos de las conexiones en la red
@@ -207,6 +234,7 @@ problema es que hay que decidir cuando la salida de la red neuronal ha de consid
 como correcta.
 
 
+
 ## Problema a implementar
 
 La migraña es un tipo de dolor de cabeza que puede ocurrir con síntomas como náuseas, vómitos o sensibilidad a la luz y al sonido. En la mayoría de las personas, se siente un dolor pulsátil únicamente en un lado de la cabeza. 
@@ -220,6 +248,16 @@ El aura es un grupo de síntomas del sistema nervioso (neurológicos). Estos sí
 
 Para este caso, se seleccionó de Kaggle un dataset que contiene datos sobre los pacientes y sus síntomas, con los cuales se hizo un diagnóstico para definir el tipo de migraña que presentaban. Con esta implementación podremos entrenar una red neuronal de clasificación que nos permita, mediante el procesamiento de los datos de una persona, poder definir qué clase de migraña está padeciendo.
 
+## Desarrollo matemático
+
+- Se tienen los vectores de entrada
+- Se calcula un vector de pesos aleatorios para cada entrada
+- Se calcula la multiplicación de las entradas por sus pesos
+- Se les aplica la función de activación
+- Se les aplica la función de salida
+- Se aplica backpropagation por ejemplo para la recalculación de pesos
+- 
+- Se calcula el error
 
 ## Referencias
 
