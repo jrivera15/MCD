@@ -62,11 +62,19 @@ A continuación, se puede ver en la figura el esquema de una red neuronal:
 
 ![Imagen de una red neuronal](https://advancedtech.files.wordpress.com/2008/08/para-post1.jpg)
 
+
+Podemos decir que una red neuronal se compone de los siguientes elementos:
+- Una **capa de entrada**
+- Una o más **capas ocultas**
+- Una **capa de salida**
+- Un conjunto de **pesos y sesgos** entre cada capa (***W*** y ***b***)
+- Una **función de activación** por cada capa oculta (***σ***)
+
 Los datos ingresan por medio de la “capa de entrada”,
 pasan a través de la “capa oculta” y salen por la “capa de salida”. Cabe mencionar que
 la capa oculta puede estar constituida por varias capas y no sólo 3 como en la imagen.
 
-### Función de entrada (input function)
+### Capa de entrada: Función de entrada (input function)
 La neurona trata a muchos valores de entrada como si fueran uno solo; esto
 recibe el nombre de entrada global. Por lo tanto, ahora nos enfrentamos al problema de
 cómo se pueden combinar estas simples entradas (ini1, ini2, ...) dentro de la entrada
@@ -125,7 +133,7 @@ un rango que va de -1 a 1. Al modificar el valor de g
 se ve afectada la pendiente de la función de
 activación.
 
-### Función de salida (output function)
+### Capa de salida: Función de salida (output function)
 El último componente que una neurona necesita es la función de salida. El valor
 resultante de esta función es la salida de la neurona i (outi); por ende, la función de
 salida determina que valor se transfiere a las neuronas vinculadas. Si la función de
@@ -141,60 +149,12 @@ que la entrada. Es también llamada función identidad.
       1 si act >= umbral
       0 de lo contrario
 
-## Aprendizaje, Validación y Codificación
-Una red neuronal debe aprender a calcular la salida correcta para
-cada constelación (arreglo o vector) de entrada en el conjunto de ejemplos. Este proceso
-de aprendizaje se denomina: proceso de entrenamiento o acondicionamiento. El
-conjunto de datos (o conjunto de ejemplos) sobre el cual este proceso se basa es, por
-ende, llamado: conjunto de datos de entrenamiento.
-
-Si la topología de la red y las diferentes funciones de cada neurona (entrada,
-activación y salida) no pueden cambiar durante el aprendizaje, mientras que los pesos
-sobre cada una de las conexiones si pueden hacerlo; el aprendizaje de una red neuronal
-significa: adaptación de los pesos.
-
-En otras palabras el aprendizaje es el proceso por el cual una red neuronal
-modifica sus pesos en respuesta a una información de entrada.
-
-Un aspecto importante respecto al aprendizaje de las redes neuronales es el
-conocer cómo se modifican los valores de los pesos, es decir, cuáles son los criterios
-que se siguen para cambiar el valor asignado a las conexiones cuando se pretende que
-la red aprenda una nueva información.
 
 
-### Mecanismos de aprendizaje
-Hay dos métodos de aprendizaje importantes que pueden distinguirse:
-1. Aprendizaje supervisado.
-2. Aprendizaje no supervisado.
+## Entrenamiento de la red neuronal
+Los pesos y sesgos son las variables que afectan nuestra salida, y por lo tanto determinan la fuerza de las predicciones. Al proceso de ajustar los pesos y sesgos de los datos de entrada se le conoce como *"entrenamiento de la red neuronal"*. El objetivo del entrenamiento de la red neuronal es encontrar un conjunto de pesos y sesgos que minimizen la función de costo.
 
-Una generalización de la fórmula o regla para decir los cambios en los pesos es
-la siguiente:
-      Peso Nuevo = Peso Viejo + Cambio de Peso
-Matemáticamente esto es:
-      wij(t+1) = wij(t) + Δwij(t)
-donde t hace referencia a la etapa de aprendizaje, wij(t+1) al peso nuevo y wij(t) al peso
-viejo.
-
-#### Aprendizaje supervisado
-
-1. Aprendizaje por corrección de error.
-Consiste en ajustar los pesos de las conexiones de la red en función de la
-diferencia entre los valores deseados y los obtenidos a la salida de la red, es decir, en
-función del error cometido en la salida.
-
-La regla de aprendizaje de propagación hacia
-atrás o de backpropagation, también conocido como regla LMS multicapa, es la primer regla de
-aprendizaje que permitió realizar cambios sobre los pesos en las conexiones de la capa
-oculta.
-
-2. Aprendizaje por refuerzo.
-3. Aprendizaje estocástico.
-
-
-
-#### Aprendizaje no supervisado
-
-### Elección del conjunto inicial de pesos
+**Elección del conjunto inicial de pesos**
 Antes de comenzar el proceso de entrenamiento se debe determinar un estado
 inicial, lo que significa: escoger un conjunto inicial de pesos para las diversas
 conexiones entre las neuronas de la red neuronal. Esto puede realizarse por varios
@@ -204,7 +164,31 @@ tipo [-n, n], donde n es un número natural positivo.
 Cabe mencionar que durante el transcurso del entrenamiento los pesos no se
 encuentran restringidos a dicho intervalo.
 
-### Detención del proceso de aprendizaje.
+
+El proceso de entrenamiento consiste en una iteración de los siguientes pasos:
+- Calcular la predicción de la salida, conocido como ***feedforward*** (hacia adelante)
+- Ajustar los pesos y sesgos, conocido como ***backpropagation*** (hacia atrás)
+
+![Imagen de grafo sequencial](https://github.com/jrivera15/MCD/assets/5826577/83a11475-55b3-4063-a4b5-159cb5b3f6a5)
+
+**Feedforward**
+Como se puede observar en la figura, feedforward es un cimple cálculo y para una red neuronal sencilla de 2 capas, la salida podría verse como la siguiente ecuación:
+
+![Imagen de ecuación de salida](https://github.com/jrivera15/MCD/assets/5826577/a9a8689f-21d1-4978-a08a-7a072a7b432d)
+
+**Función de costo**
+Una vez que tenemos nuestra salida, necesitamos evaluar qué tan "buenas" han sido nuestras predicciones, y para eso utilizamos una ***función de pérdida (o de costo)***. Una de las más comunes es la 
+**Sum of Square Error (SSE)** (suma residual de cuadrados), la cual es simplemente la suma de las diferencias entre cada valor predicho y el valor real, elevadas al cuadraro:
+
+![Imagen ecuación SSE](https://github.com/jrivera15/MCD/assets/5826577/52276e37-c3a7-4b49-a12f-c1861aae68c2)
+
+**Backpropagation**
+Una vez que se ha calculado el error, necesitamos una manera de propagar el error hacia atrás y actualizar los pesos y sesgos. Para ello necesitamos saber la derivada de la función de costo con respecto
+a los pesos y sesgos, para poder así incrementar o reducir estos pesos y sesgos como lo muestra el siguiente diagrama. A esto se le conoce como el **Gradient descent algorithm** (Descenso de gradiente):
+
+![Diagrama algoritmo descenso de gradiente ](https://github.com/jrivera15/MCD/assets/5826577/32d3871e-2d27-4b65-9859-dd72609863c6)
+
+**Detención del proceso de aprendizaje**
 Para determinar cuándo se detendrá el proceso de aprendizaje, es necesario
 establecer una condición de detención.
 Normalmente el entrenamiento se detiene cuando el cálculo del error cuadrado
@@ -218,7 +202,7 @@ Luego de alcanzarse la condición de detención, los pesos no se volverán a
 cambiar. Entonces podemos decir que la transformación de los datos de entrada a los de
 salida está resuelta. 
 
-### Validación de la red neuronal
+**Validación de la red neuronal**
 Después del proceso de entrenamiento los pesos de las conexiones en la red
 neuronal quedan fijos. Como paso siguiente se debe comprobar si la red neuronal puede
 resolver nuevos problemas, del tipo general, para los que ha sido entrenada. Por lo tanto,
@@ -228,36 +212,78 @@ Cada ejemplo del conjunto de evaluación contiene los valores de las variables d
 entrada, con su correspondiente solución tomada; pero ahora esta solución no se le es
 otorgada a la red neuronal. Luego se compara la solución calculada para cada ejemplo
 de validación con la solución conocida.
-El nuevo ejemplo utilizado para la validación se identifica como Eu y su
-correspondiente salida correcta como Au (u indica incógnita, en inglés). Ahora el
-problema es que hay que decidir cuando la salida de la red neuronal ha de considerarse
+Ahora el problema es que hay que decidir cuando la salida de la red neuronal ha de considerarse
 como correcta.
 
 
 
-## Problema a implementar
+## Problema a implementar: Predicción de Covid-19
 
-La migraña es un tipo de dolor de cabeza que puede ocurrir con síntomas como náuseas, vómitos o sensibilidad a la luz y al sonido. En la mayoría de las personas, se siente un dolor pulsátil únicamente en un lado de la cabeza. 
+En la actualidad, todo lo relacionado a la reciente enfermedad causada por el virus SARS-CoV-2 se ha convertido en un tema de gran atención a nivel mundial y ha pasado a formar una de las áreas más estudiadas tanto por médicos, químicos, ingenieros, científicos, entre muchas otras.
 
-Existen dos tipos principales de migrañas:
+El SARS-Cov-2 es un virus que forma parte de la familia de virus “Coronavirus”, que reciben su nombre por su forma en “corona”. Es el más reciente de los coronavirus, identificado en el 2019 y causa la enfermedad llamada COVID-19, responsable de la actual pandemia.
 
-- Migraña con aura (migraña clásica)
-- Migraña sin aura (migraña común)
+Gracias a la tecnología con la que contamos en nuestro país, el Gobierno de México se ha dado 
+a la tarea de recopilar información de distintos órdenes de gobierno para poner a disposición de quien desee hacer uso de ellos.
 
-El aura es un grupo de síntomas del sistema nervioso (neurológicos). Estos síntomas se consideran un signo de advertencia de que una migraña está por venir.
+Un ejemplo es el dataset nombrado "COVID19MEXICO", el cuál se encuentra de manera libre y gratuita a través del portal datos.gob.mx. Este dataset consta de XXXX registros de pacientes (de manera anónima), donde podemos analizar variables como la edad, el historial 
+del fumador, si cuenta con un diagnóstico de diabetes, obesidad, hipertensión, etc. Entre muchas otras variables de interés también 
+podemos encontrar una variable que nos indica si el diagnóstico final para covid19 fue positivo o negativo, si el paciente fue intubado y si por desgracia hubo defunción.
 
-Para este caso, se seleccionó de Kaggle un dataset que contiene datos sobre los pacientes y sus síntomas, con los cuales se hizo un diagnóstico para definir el tipo de migraña que presentaban. Con esta implementación podremos entrenar una red neuronal de clasificación que nos permita, mediante el procesamiento de los datos de una persona, poder definir qué clase de migraña está padeciendo.
+De esta manera, podríamos entrenar una red neuronal para que con el historial clínico de un nuevo paciente podamos predecir si existe alta probabilidad de que sea ingresado a una unidad de atención médica, o si tendría que ser intubado, o un resultado menos aofrtunado sería si podría llegar a una defunción, claro siempre teniendo en cuenta que existe un cierto margen de error. Por supuesto que esta aplicación podría utilizarse de manera informativa y preventiva, pero nunca sustituiría a una evaluación realizada por un experto en la salud acompañada del resultado de pruebas de laboratorio.
 
-## Desarrollo matemático
+### Desarrollo matemático
+
+Primeramente, tendríamos que hacer una selección de las variables que consideramos importantes para el modelo.Por ejemplo, cada una de estas variables independientes 
+formarían nuestro vector de entrada de la siguiente manera:
+
+| x | Nombre de la variable |             
+| ----------- | ----------- |
+| x1 | Sexo |
+| x2 | Edad |
+| x3 | Neumonía |
+| x4 | Diabetes |
+| x5 | Asma |
+| x6 | Inmunosupresión |
+| x7 | Hipertensión |
+| x8 | Cardiovsacular |
+| x9 | Obesidad |
+| x10 | Tabaquismo |
+| x11 | Renal_Crónica |
+| x12 | EPOC |
+
+
+
+
 
 - Se tienen los vectores de entrada
-- Se calcula un vector de pesos aleatorios para cada entrada
-- Se calcula la multiplicación de las entradas por sus pesos
-- Se les aplica la función de activación
-- Se les aplica la función de salida
+- Se calcula un vector de pesos y sesgos aleatorios para cada entrada
+- Se calcula la sumatoria de la multiplicación de las entradas por sus pesos
+- Se les aplica la función de activación, por ejemplo la sigmoide para mapear a valores de 0 a 1
+- feedforward para calcular la salida
+- Se calcula el error de lo predicho con lo real
 - Se aplica backpropagation por ejemplo para la recalculación de pesos
-- 
-- Se calcula el error
+- Se calcula de nuevo el error y se repite feedforward y backpropagation hasta cumplir cierta codición que dependa del error, numero de itereaciones, etc.
+
+X = 
+[[0, 29, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+[1, 65, 0, 1, 0, 1, 0, 1, 1, 0, 0],
+[0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+...,
+[1, 87, 1, 0, 1, 0, 0, 0, 0, 0, 0]]
+
+Y =
+[0,
+ 1,
+ 0,
+ ...,
+ 1
+ ]
+ 
+ sum(x1*w1
+ 
+ 
+
 
 ## Referencias
 
