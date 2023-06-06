@@ -287,13 +287,13 @@ Y =
 
 ## Referencias
 
-Damián Jorge Matich. Cátedra: Redes Neuronales: Conceptos Básicos y Aplicaciones. 
+- Damián Jorge Matich. Cátedra: Redes Neuronales: Conceptos Básicos y Aplicaciones. 
 https://www.frro.utn.edu.ar/repositorio/catedras/quimica/5_anio/orientadora1/monograias/matich-redesneuronales.pdf
 
-Dataset en Kaggle
-https://www.kaggle.com/datasets/weinoose/migraine-classification
+- How to build your own Neural Network from scratch in Python. James Loy.
+https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6
 
-MedlinePlus
-https://medlineplus.gov/spanish/ency/article/000709.htm
+- Gobierno de México
+https://coronavirus.gob.mx/covid-19/
 
 
