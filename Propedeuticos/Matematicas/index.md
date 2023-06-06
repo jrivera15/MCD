@@ -1,14 +1,4 @@
-<head>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$','$']]
-      }
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-</head>
+![image](https://github.com/jrivera15/MCD/assets/5826577/781f27a0-c6eb-4907-9b55-a2d03d3cfec8)
 
 # REDES NEURONALES
 
