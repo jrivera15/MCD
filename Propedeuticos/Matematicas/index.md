@@ -219,7 +219,7 @@ como correcta.
 
 
 
-## Problema a implementar: Predicción de Covid-19
+## Problema a implementar: Predicción de defunción en casos de Covid-19
 
 En la actualidad, todo lo relacionado a la reciente enfermedad causada por el virus SARS-CoV-2 se ha convertido en un tema de gran atención a nivel mundial y ha pasado a formar una de las áreas más estudiadas tanto por médicos, químicos, ingenieros, científicos, entre muchas otras.
 
@@ -228,62 +228,66 @@ El SARS-Cov-2 es un virus que forma parte de la familia de virus “Coronavirus�
 Gracias a la tecnología con la que contamos en nuestro país, el Gobierno de México se ha dado 
 a la tarea de recopilar información de distintos órdenes de gobierno para poner a disposición de quien desee hacer uso de ellos.
 
-Un ejemplo es el dataset nombrado "COVID19MEXICO", el cuál se encuentra de manera libre y gratuita a través del portal datos.gob.mx. Este dataset consta de XXXX registros de pacientes (de manera anónima), donde podemos analizar variables como la edad, el historial 
-del fumador, si cuenta con un diagnóstico de diabetes, obesidad, hipertensión, etc. Entre muchas otras variables de interés también 
+Un ejemplo es el dataset nombrado "COVID19MEXICO", el cuál se encuentra de manera libre y gratuita a través del portal datos.gob.mx. Este dataset consta de más de 7 millones de registros de pacientes (anónimos), donde podemos analizar variables como la edad, el historial 
+fumador, si cuenta con un diagnóstico de diabetes, obesidad, hipertensión, etc. Entre muchas otras variables de interés también 
 podemos encontrar una variable que nos indica si el diagnóstico final para covid19 fue positivo o negativo, si el paciente fue intubado y si por desgracia hubo defunción.
 
-De esta manera, podríamos entrenar una red neuronal para que con el historial clínico de un nuevo paciente podamos predecir si existe alta probabilidad de que sea ingresado a una unidad de atención médica, o si tendría que ser intubado, o un resultado menos aofrtunado sería si podría llegar a una defunción, claro siempre teniendo en cuenta que existe un cierto margen de error. Por supuesto que esta aplicación podría utilizarse de manera informativa y preventiva, pero nunca sustituiría a una evaluación realizada por un experto en la salud acompañada del resultado de pruebas de laboratorio.
+De esta manera, podríamos entrenar una red neuronal para que con el historial clínico de un nuevo paciente podamos predecir si existe alta probabilidad de que sea ingresado a una unidad de atención médica, o si tendría que ser intubado, o un resultado menos afortunado sería si podría llegar a una defunción, claro siempre teniendo en cuenta que existe un cierto margen de error. Por supuesto que esta aplicación podría utilizarse de manera informativa y preventiva, pero nunca sustituiría a una evaluación realizada por un experto en la salud acompañada del resultado de pruebas de laboratorio.
 
 ### Desarrollo matemático
+
+Para este caso, se hace el desarrollo matemático de  en cuanto a una predicción de una defunción en base a las variables independientes que forman un historial clínico del sujeto.
+
+#### Preprocesamiento
 
 Primeramente, tendríamos que hacer una selección de las variables que consideramos importantes para el modelo.Por ejemplo, cada una de estas variables independientes 
 formarían nuestro vector de entrada de la siguiente manera:
 
 | x | Nombre de la variable |             
 | ----------- | ----------- |
-| x1 | Sexo |
-| x2 | Edad |
-| x3 | Neumonía |
-| x4 | Diabetes |
-| x5 | Asma |
-| x6 | Inmunosupresión |
-| x7 | Hipertensión |
-| x8 | Cardiovsacular |
-| x9 | Obesidad |
-| x10 | Tabaquismo |
-| x11 | Renal_Crónica |
+| x1 | SEXO |
+| x2 | EDAD |
+| x3 | NEUMONIA |
+| x4 | DIABETES |
+| x5 | ASMA |
+| x6 | INMUSUPR |
+| x7 | HIPERTENSION |
+| x8 | CARDIOVASCULAR |
+| x9 | OBESIDAD |
+| x10 | TABAQUISMO |
+| x11 | RENAL_CRONICA |
 | x12 | EPOC |
+| x13 | RESULTADO_ANTIGENO |
 
+Nuestro vector de salida será en función de la variable "FECHA_DEFUNCION". Cabe mencionar que, esta variable es de tipo fecha, sin embargo podríamos transformarla, de tal manerea que si existe una fecha válida
+entonces asumimos que sí hubo una defunción, de lo contrario no la hubo. Con esto podemos tener una nueva variable llamada "DEFUNCION" que nos indique con 0 y 1 si el sujeto falleció o no.
 
+| y | Nombre de la variable |             
+| ----------- | ----------- |
+| y1 | DEFUNCION |
 
+Una vez definidas estas variables, se define que una parte del dataset se tomará para la fase de entrenamiento de la red neuronal y la otra para la fase de validación. 
 
+#### Entrenamiento
 
-- Se tienen los vectores de entrada
-- Se calcula un vector de pesos y sesgos aleatorios para cada entrada
-- Se calcula la sumatoria de la multiplicación de las entradas por sus pesos
-- Se les aplica la función de activación, por ejemplo la sigmoide para mapear a valores de 0 a 1
-- feedforward para calcular la salida
+Podríamos definir inicialmente un un perceptrón multicapa sencillo que cuente con 1 capas oculta de 2 neuronas. 
+
+Para el entrenamiento se realizan varias operaciones:
+- Se genera una matriz de pesos aleatorios y un vector de sesgos aleatorios 
+- Se calcula la sumatoria de la multiplicación del vector de entrada por la matriz de pesos más el sesgo
+
+![image](https://github.com/jrivera15/MCD/assets/5826577/89c6bf2a-2b4d-48be-a4b3-858bc5f1f87f)
+
+Nuestra matriz de pesos W tendrá tantas filas como neuronas tenga la capa a la que llegan los enlaces y tantas columnas como valores lleguen a la capa. En nuestro problema esta matriz podría ser de 2 x 13.
+
+- A la salida de una neurona se le aplica una función de activación, por ejemplo la sigmoide, la cual se conoce que resulta más adecuada en tareas de clasificación, especialmente al clasificar solo una o dos clases como en este caso. Con esto se define la información que va a pasar a la siguiente capa de neuronas.
+
+- Se implementa también un algoritmo Feedforward para calcular la salida
 - Se calcula el error de lo predicho con lo real
 - Se aplica backpropagation por ejemplo para la recalculación de pesos
 - Se calcula de nuevo el error y se repite feedforward y backpropagation hasta cumplir cierta codición que dependa del error, numero de itereaciones, etc.
 
-X = 
-[[0, 29, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-[1, 65, 0, 1, 0, 1, 0, 1, 1, 0, 0],
-[0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-...,
-[1, 87, 1, 0, 1, 0, 0, 0, 0, 0, 0]]
 
-Y =
-[0,
- 1,
- 0,
- ...,
- 1
- ]
- 
- sum(x1*w1
- 
  
 
 
