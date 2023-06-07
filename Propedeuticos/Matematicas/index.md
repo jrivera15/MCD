@@ -282,10 +282,18 @@ Nuestra matriz de pesos W tendrá tantas filas como neuronas tenga la capa a la 
 
 - A la salida de una neurona se le aplica una función de activación, por ejemplo la sigmoide, la cual se conoce que resulta más adecuada en tareas de clasificación, especialmente al clasificar solo una o dos clases como en este caso. Con esto se define la información que va a pasar a la siguiente capa de neuronas.
 
-- Se implementa también un algoritmo Feedforward para calcular la salida
-- Se calcula el error de lo predicho con lo real
-- Se aplica backpropagation por ejemplo para la recalculación de pesos
-- Se calcula de nuevo el error y se repite feedforward y backpropagation hasta cumplir cierta codición que dependa del error, numero de itereaciones, etc.
+- Se implementa un algoritmo Feedforward para calcular la salida, donde cada neurona envía su salida calculada a la siguiente capa de neuronas, hasta llegar a la capa de salida.
+
+- Se utiliza una función de pérdida o de costo para calcular el error de lo predicho con lo real. Aquí podemos utilizar la Sum of Square Error (SSE), que calcularía la suma de las diferencias entre cada valor predicho y el valor real, elevadas al cuadrado.
+
+- Se aplica un algoritmo de Backpropagation para la recalculación de pesos y sesgos con respecto al error que obtuvimos. Para hacer el ajuste de los pesos podemos ultizar el algoritmo de Descenso de Gradiente, el cual nos indica si debemos ajustar el peso hacia abajo o hacia arriba, dependiendo de cual nos acerque más al error mínimo.
+
+- Se calcula de nuevo el error y se repite feedforward y backpropagation hasta cumplir cierta codición que dependa ya sea del error, numero de itereaciones, etc.
+
+#### Validación
+
+Una vez entrenada la red, validamos la precisión de nuestro modelo utilizando ahora nuestro conjunto de datos de validación. De esta manera la red ahora puede predecir el resultado para este nuevo y desconocido conjunto de datos y podremos comparar lo bien que lo ha hecho. Dependiendo de estos resultados es que podremos mejorar nuestra red ya sea cambiando nuestra estructura de la red, utilizando diferentes funciones y/o algoritmos, modificando los parámetros de dichas funciones y algoritmos, entre muchas otras.
+
 
 
  
