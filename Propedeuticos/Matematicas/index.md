@@ -294,7 +294,11 @@ Nuestra matriz de pesos W tendrá tantas filas como neuronas tenga la capa a la 
 
 Una vez entrenada la red, validamos la precisión de nuestro modelo utilizando ahora nuestro conjunto de datos de validación. De esta manera la red ahora puede predecir el resultado para este nuevo y desconocido conjunto de datos y podremos comparar lo bien que lo ha hecho. Dependiendo de estos resultados es que podremos mejorar nuestra red ya sea cambiando nuestra estructura de la red, utilizando diferentes funciones y/o algoritmos, modificando los parámetros de dichas funciones y algoritmos, entre muchas otras.
 
+## Conclusión
 
+Finalmente, y una vez que nuestra red esté entrenada y digamos que los resultados y el error son aceptables, podríamos introducir un nuevo conjunto de datos, donde desconocemos su la salida, para poder predecir si una persona con cierto historial clínico tiene probabilidad de fallecer. Dado que utilizamos la función sigmoide en nuestra capa de salida, ésta será entre 0 y 1 y eso podríamos interpretarlo como la probabilidad de defunción, o simplemente definir un umbral donde si se excede entonces hay una probabilidad alta de defunción, etc. 
+
+Cabe mencionar que siempre en temas de salud, existen otras variables más propias al contexto que podrían ayudar a definir cómo debería interpretarse la salida de la red, o a definir el umbral. Esto podría quedar a criterio del experto en salud que forme parte del desarrollo de un problema como este.
 
  
 
