@@ -1,4 +1,13 @@
 # Proyecto de Base de Datos: Covid-19
+Este documento se presenta como proyecto final del propedéutico de Bases de Datos para la maestría en Ciencia de Datos.
+
+En las secciones del documento se presenta lo siguiente:
+- Descarga de los archivos para la base de datos
+- Creación de la base de datos en MySQL Workbench
+- Diagrama UML
+- Queries
+- Anexo
+
 
 ## Sobre la base de datos
 La base de datos es de acceso libre y gratuita y se encuentra a través del portal de Datos del Gobierno de México. Se puede descargar en formato CSV en la siguiente liga:
@@ -18,11 +27,17 @@ Los registros de la base de datos pertenecen a pacientes anónimos donde podemos
 Todos estos indicadores sirven ar hacer un ánalisis amplio y extenso sobre esta enfermedad, lo cual permite encontrar relaciones entre las variables, implementar algoritmos
 de clasificación, predicción, etc. 
 
-## Instalación de BD en MySQL 8.0
+## Creación de BD en MySQL 8.0
 
 Se utilizó un equipo de cómputo con sistema operativo Windows 11, procesador i7 y 32GB en memoria RAM.
 
-A través de la consola, se ejecutó el comando **"SOURCE covid19mexico.sql;"** con el cual se logró crear la tabla **"covid19mexico"** en el schema **"mcd"** previamente creado. Este proceso tuvo una duración de aproximadamente 12 horas. 
+Los siguientes pasos fueron ejecutados para :
+1. Se importó el archivo **"COVID19MEXICO.csv"** a través de otro manejador de bases de datos llamado **"DB Browser for SQLite"**, el cual creó la tabla "COVID19MEXICO" en segundos.
+2. Una vez creada la tabla, se exportó como archivo **"COVID19MEXICO.sql"**, el cual contiene todo el script SQL para crear la tabla e insertar los datos.
+3. En MySQL Workbench, se creó un nuevo schema para la base de datos: **"mcd"**.
+4. A través de la consola, se ejecutó el comando **"SOURCE covid19mexico.sql;"** con el cual se logró crear la tabla **"covid19mexico"** en el schema **"mcd"** previamente creado. Este proceso tuvo una duración de aproximadamente 12 horas. 
+
+*NOTA: Favor de revisar la sección "Anexo" de este documento para más detalles sobre los pasos que se ejecutaron, los problemas que surgieron y sus respectivas soluciones.*
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/285af16a-5e5c-4f1f-bd0c-c5b21a3bc048"  width="50%" height="50%"></p>
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/95b50717-0332-48ab-95c4-5fc82fad346d"  width="25%" height="25%"></p>
@@ -39,11 +54,11 @@ El archivo **"201128 Catalogos.xls"** contiene todas las tablas catálogo en cad
 
 Una vez realizado esto, se importó cada uno de los catálogos en MySQLWorkbench a través de la herramienta "Table Data Import Wizard":
 
-<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/2ed8b010-dc0b-4655-95ad-8b18cbd623cd"  width="25%" height="25%"></p>
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/2ed8b010-dc0b-4655-95ad-8b18cbd623cd"  width="15%" height="15%"></p>
 
 Es importante 
 
-<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/97b43c59-d728-4ee5-ace5-744a384e754d"  width="25%" height="25%"></p>
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/97b43c59-d728-4ee5-ace5-744a384e754d"  width="50%" height="50%"></p>
 
 
 
@@ -54,7 +69,7 @@ Es importante
 
 Durante la creación de la tabla "covid19mexico" se presentaron algunos problemas los cuales se enlistan a continuación junto con la solución correspondiente.
 
-Inicialmente se intentó utilizar la herramienta "TABLE DATA IMPORT WIZARD" que provee MySQL Workbench, pero el proceso fue muy lento. En aproximadamente 2 días sólo importó
+Inicialmente se intentó utilizar la herramienta "TABLE DATA IMPORT WIZARD" que provee MySQL Workbench, pero el proceso fue muy lento. En 2 días sólo importó
 aproximadamente el 5% del total de registros (800,000 aprox). Esta acción fue cancelada.
 
 Se exploró la siguiente opción con resultados exitosos:
