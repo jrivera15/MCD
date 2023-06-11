@@ -56,7 +56,7 @@ Una vez realizado esto, se importó cada uno de los catálogos en MySQLWorkbench
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/2ed8b010-dc0b-4655-95ad-8b18cbd623cd"  width="15%" height="15%"></p>
 
-Es importante 
+Es importante revisar si las columnas tienen el tipo de dato correcto, y si tienen definida sus llaves primarias, foráneas, etc. para establecer correctamente las relaciones entre las entidades de nuestra base de datos. En caso de no ser así, podemos modificar las tablas a través de la opción "Alter Table":
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/97b43c59-d728-4ee5-ace5-744a384e754d"  width="50%" height="50%"></p>
 
@@ -64,7 +64,14 @@ Es importante
 
 
 ## Diagrama UML
+
+Utilizando la herramienta "" de MySQL Workbech, se realizó un proceso de ingeniería inversa para obtener el modelo UML de la base de datos:
+
+
 ## Queries
+
+En este mismo repositorio se puede encontrar el archivo **"queries_covid19.sql"** donde se pueden ver completas todas las queries realiazadas a la base de datos.
+
 ## Anexo
 
 Durante la creación de la tabla "covid19mexico" se presentaron algunos problemas los cuales se enlistan a continuación junto con la solución correspondiente.
