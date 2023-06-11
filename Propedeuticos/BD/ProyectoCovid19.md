@@ -4,10 +4,16 @@
 La base de datos es de acceso libre y gratuita y se encuentra a través del portal de Datos del Gobierno de México. Se puede descargar en formato CSV en la siguiente liga:
 https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mexico
 
+El archivo de descarga es una carpeta comprimida **"datos_abiertos_covid19.zip"** la cual contiene la base de datos en formato CSV: **"COVID19MEXICO.csv"**.
+
 Esta base de datos se encuentra actualizada al mes de Mayo de 2023 y cuenta con **14,691,920 millones** de registros.
 
-Los registros pertenecen a pacientes anónimos donde podemos ver si contaban con diagnóstico de enfermedades cardiovasculares, hipertensión, asma, etc. También se registra
-el diagnóstico para Covid-19, si llegaron a ser intubados o si desafortunadamente fallecieron.
+Es importante descargar también el diccionario de datos, el cual es una carpeta comprimida **"diccionario_datos_covid19.zip"**, la cual contiene los siguientes archivos:
+- **"201128 Catalogos.xls":** En este archivo se encuentran como pestañas todas las tablas catálogo que utiliza la base de datos para formar la tabla "covid19mexico". 
+- **"201128 Descriptores_.xls"**: En este archivo se encuentran todas las columnas que conforman de la tabla "covid19mexico" junto con su descripción y formato.
+- **"Actualizaciones en la presentación de información referente a casos de COVID.pdf"**: Este archivo contiene información relacionada a cambios que se hayan realizado sobre la base de datos.
+
+Los registros de la base de datos pertenecen a pacientes anónimos donde podemos ver si contaban con diagnóstico de enfermedades cardiovasculares, hipertensión, asma, etc. También se registra el diagnóstico para Covid-19, si llegaron a ser intubados o si desafortunadamente fallecieron.
 
 Todos estos indicadores sirven ar hacer un ánalisis amplio y extenso sobre esta enfermedad, lo cual permite encontrar relaciones entre las variables, implementar algoritmos
 de clasificación, predicción, etc. 
@@ -18,18 +24,30 @@ Se utilizó un equipo de cómputo con sistema operativo Windows 11, procesador i
 
 A través de la consola, se ejecutó el comando **"SOURCE covid19mexico.sql;"** con el cual se logró crear la tabla **"covid19mexico"** en el schema **"mcd"** previamente creado. Este proceso tuvo una duración de aproximadamente 12 horas. 
 
-<p align="center">
-    <img src="https://github.com/jrivera15/MCD/assets/5826577/285af16a-5e5c-4f1f-bd0c-c5b21a3bc048"  width="50%" height="50%">
-  </p>
- <p align="center">
-    <img src="https://github.com/jrivera15/MCD/assets/5826577/95b50717-0332-48ab-95c4-5fc82fad346d"  width="25%" height="25%">
-  </p>
-
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/285af16a-5e5c-4f1f-bd0c-c5b21a3bc048"  width="50%" height="50%"></p>
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/95b50717-0332-48ab-95c4-5fc82fad346d"  width="25%" height="25%"></p>
 
 
 
 
 ## Creción de tablas de catálogo
+El archivo **"201128 Catalogos.xls"** contiene todas las tablas catálogo en cada una de sus pestañas. Para importarlas en MySQL Workbench, primeramente se guardó cada una de las pestañas como un archivo individual en formato CSV:
+
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/e1be5452-cdf9-4f40-9456-11d1a393e911"  width="25%" height="25%"></p>
+
+
+
+Una vez realizado esto, se importó cada uno de los catálogos en MySQLWorkbench a través de la herramienta "Table Data Import Wizard":
+
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/2ed8b010-dc0b-4655-95ad-8b18cbd623cd"  width="25%" height="25%"></p>
+
+Es importante 
+
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/97b43c59-d728-4ee5-ace5-744a384e754d"  width="25%" height="25%"></p>
+
+
+
+
 ## Diagrama UML
 ## Queries
 ## Anexo
@@ -45,22 +63,17 @@ Se exploró la siguiente opción con resultados exitosos:
 3. En MySQL Workbench, se utilizó la herramienta "DATA IMPORT", sin embargo se presentaron algunos problemas:  
   
   a. **Error 1064** 
-  <p align="center">
-    <img src="https://github.com/jrivera15/MCD/assets/5826577/e8555302-e2d0-459b-9d45-df821785a16d"  width="50%" height="50%">
-  </p>
+  <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/e8555302-e2d0-459b-9d45-df821785a16d"  width="50%" height="50%"></p>
+  
   Se solucionó eliminando el primer y último registro del script SQL, el cual contenía las lineas "BEGIN TRANSACTION;" y "COMMIT;" respectivamente.
   También las dobles comillas que tenían el nombre de la tabla y las columnas para cada tabla presenraban problema, así que se removieron.
   
-  <p align="center">
-    <img src="https://github.com/jrivera15/MCD/assets/5826577/dd512d55-c354-40bf-b69a-f533850e01fc"  width="50%" height="50%">
-  </p>  
+  <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/dd512d55-c354-40bf-b69a-f533850e01fc"  width="50%" height="50%"></p>  
   
-  b. Error: Al insertar los registros, la columna "PAIS_ORIGEN" que era inicialmente de tipo "INT" presentaba valores de tipo "TEXT" (por ejemplo: "Estados Unidos de América") lo cual causaba conflicto.
+  b. Error: Al insertar los registros, la columna "PAIS_ORIGEN" que era inicialmente de tipo "INT" presentaba valores de tipo "TEXT" (por ejemplo: "Estados Unidos de           América") lo cual causaba conflicto.
   Se solucionó exportando de nuevo el archivo .sql desde "DB Browser for SQLite", indicando que la variable "PAIS_ORIGEN" era de tipo "TEXT".
 
-  <p align="center">
-    <img src="https://github.com/jrivera15/MCD/assets/5826577/182caf74-754c-4aa6-a3c1-50b6a8762588"  width="50%" height="50%">
-  </p>  
+  <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/182caf74-754c-4aa6-a3c1-50b6a8762588"  width="50%" height="50%"></p>  
 
 4. Una vez que se solucionaron los problemas se inició el proceso de creación de la tabla y la inserción de los registros. Este proceso tuvo que ser detenido ya que
    también mostró ser muy lento y no se podía medir el avance.
