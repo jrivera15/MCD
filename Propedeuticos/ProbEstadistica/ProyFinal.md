@@ -1,4 +1,4 @@
-# Proyecto de Probabilidad y Estadística: Análisis de Analfabetismo en municipios de México
+# Proyecto de Probabilidad y Estadística: Análisis del Porcentaje de Analfabetismo en municipios de México
 
 Este documento se presenta como proyecto final del propedéutico de Probabilidad y Estadística para la maestría en Ciencia de Datos.
 
