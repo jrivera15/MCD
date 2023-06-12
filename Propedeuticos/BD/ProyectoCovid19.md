@@ -1,6 +1,7 @@
 # Proyecto de Base de Datos: Covid-19
 Este documento se presenta como proyecto final del propedéutico de Bases de Datos para la maestría en Ciencia de Datos.
 
+Para este proyecto se escogió la base de datos de COVID19 en México, por ser un tema de gran interés no sólo a nivel nacional sino mundial, donde actualmente se utiliza este tipo de información para hacer análisis estadísticos amplios y detallados sobre esta enfermedad. Todo esto permite a su vez, conocer más sobre la enfermedad, identificar patrones, hacer clasificación de casos, incluso hacer predicciones de contagio, defunción, entre muchas más.
 
 En las secciones del documento se presenta lo siguiente:
 - Descarga de los archivos para la base de datos
@@ -11,6 +12,7 @@ En las secciones del documento se presenta lo siguiente:
 
 
 ## Sobre la base de datos
+
 La base de datos es de acceso libre y gratuita y se encuentra a través del portal de Datos del Gobierno de México. Se puede descargar en formato CSV en la siguiente liga:
 https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mexico
 
