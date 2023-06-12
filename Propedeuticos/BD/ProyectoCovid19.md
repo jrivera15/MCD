@@ -27,8 +27,7 @@ Es importante descargar también el diccionario de datos, el cual es una carpeta
 
 Los registros de la base de datos pertenecen a pacientes anónimos donde podemos ver si contaban con diagnóstico de enfermedades cardiovasculares, hipertensión, asma, etc. También se registra el diagnóstico para Covid-19, si llegaron a ser intubados o si desafortunadamente fallecieron.
 
-Todos estos indicadores sirven ar hacer un ánalisis amplio y extenso sobre esta enfermedad, lo cual permite encontrar relaciones entre las variables, implementar algoritmos
-de clasificación, predicción, etc. 
+
 
 ## Creación de BD en MySQL 8.0
 
@@ -46,9 +45,7 @@ Los siguientes pasos fueron ejecutados para :
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/95b50717-0332-48ab-95c4-5fc82fad346d"  width="25%" height="25%"></p>
 
 
-
-
-## Creción de tablas de catálogo
+### Creción de tablas de catálogo
 El archivo **"201128 Catalogos.xls"** contiene todas las tablas catálogo en cada una de sus pestañas. Para importarlas en MySQL Workbench, primeramente se guardó cada una de las pestañas como un archivo individual en formato CSV:
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/e1be5452-cdf9-4f40-9456-11d1a393e911"  width="25%" height="25%"></p>
@@ -63,12 +60,15 @@ Es importante revisar si las columnas tienen el tipo de dato correcto, y si tien
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/97b43c59-d728-4ee5-ace5-744a384e754d"  width="50%" height="50%"></p>
 
+### Creación de tabla "covid19sonora"
+
+Dada la gran cantidad de registros que contiene la base de datos original (más de 14 millones de registros), se creó una tabla "covid19sonora" con todos aquellos registros donde su estado de residencia es Sonora. Esto con la finalidad de tener un dataset más pequeño que se pudiera trabajar mejor con el poder de cómputo que se tiene y que aún así se obtuvieram datos de interés.
 
 
 
 ## Diagrama UML
 
-Utilizando la herramienta "Reverse Engineer" de MySQL Workbench, se realizó un proceso de ingeniería inversa para obtener el modelo UML de la base de datos. Para ver el diagrama con más detalle
+Utilizando la herramienta "Reverse Engineer" de MySQL Workbench, se realizó un proceso de ingeniería inversa para obtener el modelo UML de la tabla **"covid19sonora"**. Para ver el diagrama con más detalle
 se encuentra el archivo **"uml_covid19sonora.png"** dentro de este mismo repositorio.
 
 <p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/78a5c77d-494b-4f53-92f6-60e180f35840"  width="50%" height="50%"></p>
@@ -78,6 +78,12 @@ se encuentra el archivo **"uml_covid19sonora.png"** dentro de este mismo reposit
 ## Queries
 
 En este mismo repositorio se puede encontrar el archivo **"queries_covid19.sql"** donde se pueden ver completas todas las queries realiazadas a la base de datos.
+
+Al hacer algunas consultas se encontraron los siguientes hallazgos:
+
+- El número de defunciones en adultos mayores es notoriamente mpas grande que en jóvenes de entre 19 a 25 años
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/7ed9aecb-7988-4c15-8434-20d0dea299d2"   width="75%" height="75%"></p>
+
 
 ## Anexo
 
