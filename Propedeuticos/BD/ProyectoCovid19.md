@@ -18,7 +18,7 @@ https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mex
 
 El archivo de descarga es una carpeta comprimida **"datos_abiertos_covid19.zip"** la cual contiene la base de datos en formato CSV: **"COVID19MEXICO.csv"**.
 
-Esta base de datos se encuentra actualizada al mes de Mayo de 2023 y cuenta con **14,691,920 millones** de registros.
+Esta base de datos tiene información desde el 01-Enero-2022 y se encuentra actualizada al 29-Mayo-2023, cuenta con **14,691,920 millones** de registros.
 
 Es importante descargar también el diccionario de datos, el cual es una carpeta comprimida **"diccionario_datos_covid19.zip"**, la cual contiene los siguientes archivos:
 - **"201128 Catalogos.xls":** En este archivo se encuentran como pestañas todas las tablas catálogo que utiliza la base de datos para formar la tabla "covid19mexico". 
@@ -75,14 +75,26 @@ se encuentra el archivo **"uml_covid19sonora.png"** dentro de este mismo reposit
 
 
 
-## Queries
+## Hallazgos
 
 En este mismo repositorio se puede encontrar el archivo **"queries_covid19.sql"** donde se pueden ver completas todas las queries realiazadas a la base de datos.
 
 Al hacer algunas consultas se encontraron los siguientes hallazgos:
 
-- El número de defunciones en adultos mayores es notoriamente mpas grande que en jóvenes de entre 19 a 25 años
-<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/7ed9aecb-7988-4c15-8434-20d0dea299d2"   width="75%" height="75%"></p>
+- El número de defunciones en adultos mayores en Sonora ha sido notoriamente más grande que en jóvenes de entre 19 a 25 años. 
+- Se observa también que elmayor número de defunciones pertenecen a las grandes ciudades del estado, lo cual es lo esperado ya que es donde reside la mayoría de la población.
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/7ed9aecb-7988-4c15-8434-20d0dea299d2"   width="50%" height="50%"></p>
+
+- Había (hay) una creencia popular de que todos aquellos pacientes que eran intubados tenían alta probabilidad de fallecer. Sin embargo, si vemos estos datos se puede observar que de todos los adultos mayores que fallecieron en Sonora, que fueron 1898, sólo 246 fueron intubados:
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/5580dd65-0008-446d-b38d-537d68fa069b"   width="50%" height="50%"></p>
+
+- 116 adultos mayores que fallecieron tenían un diagnóstico positivo para Hipertensión, Diabetes y Enfermedades cardiovasculares. Con esto podemos estimar que el 6% de las defunciones en adultos mayores contaban con esta tercia de enfermedades.
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/abe53c35-8257-4ef2-973c-4d4c746fea1d"   width="25%" height="25%"></p>
+
+
+
+
+
 
 
 ## Anexo
