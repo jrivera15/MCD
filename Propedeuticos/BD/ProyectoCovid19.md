@@ -1,6 +1,7 @@
 # Proyecto de Base de Datos: Covid-19
 Este documento se presenta como proyecto final del propedéutico de Bases de Datos para la maestría en Ciencia de Datos.
 
+
 En las secciones del documento se presenta lo siguiente:
 - Descarga de los archivos para la base de datos
 - Creación de la base de datos en MySQL Workbench
@@ -65,7 +66,11 @@ Es importante revisar si las columnas tienen el tipo de dato correcto, y si tien
 
 ## Diagrama UML
 
-Utilizando la herramienta "" de MySQL Workbech, se realizó un proceso de ingeniería inversa para obtener el modelo UML de la base de datos:
+Utilizando la herramienta "Reverse Engineer" de MySQL Workbench, se realizó un proceso de ingeniería inversa para obtener el modelo UML de la base de datos. Para ver el diagrama con más detalle
+se encuentra el archivo **"uml_covid19sonora.png"** dentro de este mismo repositorio.
+
+<p align="center"><img src="https://github.com/jrivera15/MCD/assets/5826577/78a5c77d-494b-4f53-92f6-60e180f35840"  width="50%" height="50%"></p>
+
 
 
 ## Queries
